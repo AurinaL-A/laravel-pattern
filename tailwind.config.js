@@ -16,6 +16,19 @@ export default {
             },
         },
     },
+    theme: {
+        extend: {
+            colors: {
+                'coffee-light': '#F2E8D5',   // Светлый бежевый
+                'coffee-medium': '#C6976F',  // Средний кофейный
+                'coffee-dark': '#8B4513',    // Темный шоколадный
+                'coffee-cream': '#FFFAF0',   // Кремовый
+            },
+        },
+    },
+    plugins: [
+        require('flowbite/plugin')
+    ],
 
     plugins: [forms],
 };

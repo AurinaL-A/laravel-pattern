@@ -6,9 +6,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ReportController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [ReportController::class, 'welcome'])->name('welcome');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [ReportController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

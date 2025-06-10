@@ -16,6 +16,11 @@ class ReportController extends Controller
         return view('reports.index', compact('reports', 'userId'));
     }
 
+    public function welcome() {
+
+        return view('welcome');
+    }
+
     public function create() {
         $reports = Report::all();
         return view('reports.create', compact('reports'));
