@@ -36,6 +36,7 @@
                 <div class="flex justify-between">
                     <p class="">ПРИВЕТСТВУЮ</p>
                 </div>
+                
 
                 <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
                     <div class="text-center text-sm sm:text-left">

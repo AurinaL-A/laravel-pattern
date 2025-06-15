@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Problem;
 use App\Models\Report;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,9 +12,9 @@ use Illuminate\Http\Request;
 class ReportController extends Controller
 {
     public function index() {
-        $reports = Report::where('user_id', Auth::user()->id)->get();
+        $problems = Problem::where('user_id', Auth::user()->id)->get();
         $userId = Auth::id();
-        return view('reports.index', compact('reports', 'userId'));
+        return view('reports.index', compact('problems', 'userId'));
     }
 
     public function welcome() {
@@ -22,7 +23,7 @@ class ReportController extends Controller
     }
 
     public function create() {
-        $reports = Report::all();
+        $reports = Problem::all();
         return view('reports.create', compact('reports'));
     }
 
@@ -36,7 +37,7 @@ class ReportController extends Controller
         $imageName = time() . '.' . $request['path_img']->extension();
         $request['path_img']->move(public_path('images'), $imageName);
 
-        Report::create([
+        Problem::create([
             'title' => $request->title,
             'description' => $request->description,
             'path_img' => $imageName,
@@ -53,7 +54,7 @@ class ReportController extends Controller
             'id' => ['required']
         ]);
 
-        Report::where('id', $request->id)->update([
+        Problem::where('id', $request->id)->update([
             'status' => $request->status,
         ]);
         return redirect()->back();
